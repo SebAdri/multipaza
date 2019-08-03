@@ -1,10 +1,8 @@
 @extends('cabecera')
 
 @section('contenido')
-<form>
-{!! csrf_field() !!}
 <div class="x_title">
-  <h2>Categorias <small>Multiplaza</small></h2>
+  <h2>Categorias</h2>
   <div class="clearfix"></div>
 </div>
 <a href="{{ route('categorias.create') }}" class="btn btn-primary col-md-offset-11" role="button"> <i class="fa fa-plus"></i>  Agregar</a>
@@ -25,26 +23,22 @@
 					<td>{{$categoria->id}}</td>
 					<td>{{$categoria->nombre}}</td>
 					<td>{{$categoria->descripcion}}</td>
-					<td>
-						<!-- Trigger the Modal -->
-						<img id="myImg" src="{{ asset($categoria->imagen) }}" alt="Snow" style="width:100%;max-width:300px">
-						{{-- <img src="{{ asset($categoria->imagen) }}" class="img-responsive img-rounded" alt="Responsive image"> --}}
+					<td><button class="btn btn-default btn-imagen" data-titulo="Imagen de la categoria {{$categoria->nombre}}" data-imagen="{{ asset($categoria->imagen) }}">Ver Imagen</button>
 					</td>
-					{{-- <td>{{$categoria->estado == 1?"Activo":"Inactivo"}}</td> --}}
 					<td>
+						<button class="btn btn-success detalles" data-titulo="Categoria {{$categoria->nombre}} está asociada a las sgtes. subcategorias:" data-detalles="{{$categoria->subcategorias->pluck('nombre')}}"><i class='fa fa-list'></i> Detalles</button>
 						<a class="btn btn-info" href="{{ route('categorias.edit', $categoria->id) }}"><i class="fa fa-edit"></i>  Editar</a>
-		                <form style="display: inline" method="POST" action="{{ route('categorias.destroy', $categoria->id) }}">
+		                {{-- <form style="display: inline" method="POST" action="{{ route('categorias.destroy', $categoria->id) }}">
 		                      {!! csrf_field() !!}
 		                      {!! method_field('DELETE') !!}
 		                      <button type="submit" class="btn btn-danger">Eliminar</button>
-		                </form>
+		                </form> --}}
 					</td>
 				</tr>
 			@endforeach
 		</tbody>
 	</table>
-</form>
-
+@include('modalDetalle-part')
 <script type="text/javascript">
 	function deleteCat(id) {
 		if (confirm('Esta seguro que desea eliminar?')) {
@@ -65,19 +59,6 @@
 		}
 	}
 </script>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- The Close Button -->
-  <span class="close">&times;</span>
-
-  <!-- Modal Content (The Image) -->
-  <img class="modal-content" id="img01">
-
-  <!-- Modal Caption (Image Text) -->
-  <div id="caption"></div>
-</div>
 @stop
 @push('script')
 <script type="text/javascript">

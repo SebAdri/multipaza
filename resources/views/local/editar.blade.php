@@ -8,7 +8,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h2>Modifique los locales <small>si no selecciona una imagen, no se actualizará la existente</small></h2>
+          <h2>Editar Local</small></h2>
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -18,7 +18,7 @@
               <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">Nombre <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" id="nombre" name="nombre" required="required" class="form-control col-md-7 col-xs-12" value = {{$local->nombre}}>
+                <input type="text" id="nombre" name="nombre" required="required" class="form-control col-md-7 col-xs-12" value = "{{$local->nombre}}">
                 @if ($errors->has('nombre'))
                   <span class="invalid-feedback errors" role="alert">
                     <strong>{{ $errors->first('nombre') }}</strong>
@@ -26,18 +26,27 @@
                 @endif
               </div>
             </div>
+            {{-- {{dd($local->ubicacion)}} --}}
             <div class="row form-group">
               <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="descipcion">Ubicación <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" id="descipcion" name="ubicacion" required="required" class="form-control col-md-7 col-xs-12" value = {{$local->ubicacion}}>
+                <input type="text" id="descipcion" name="ubicacion" required="required" class="form-control col-md-7 col-xs-12" value = "{{$local->ubicacion}}">
               </div>
             </div>
             <div class="row form-group">
-              <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Elegir foto <span class="required">*</span>
+              <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="foto_principal">Foto Principal <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="file" id="imagen" name="imagen" class="form-control col-md-7 col-xs-12">
+                <input type="file" id="foto_principal" name="foto_principal" required="required" class="form-control col-md-7 col-xs-12">
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="foto_ubicacion">Foto Ubicación
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="file" id="foto_ubicacion" name="foto_ubicacion" class="form-control col-md-7 col-xs-12">
               </div>
             </div>
             <div class="row form-group">
@@ -82,8 +91,7 @@
             <div class="ln_solid"></div>
             <div class="row form-group">
               <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                <button type="submit" class="btn btn-success">Grabar</button>
-                <button class="btn btn-primary" type="reset">Resetar</button>
+                <button type="submit" class="btn btn-success">Guardar</button>
                 <a href="/administrador/locales" class="btn btn-primary" type="button" id="volver" name="volver">Volver</a>
               </div>
             </div>

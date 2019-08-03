@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>Multiplaza! Toda tu vida | </title>
 
     <!-- Bootstrap -->
     <link href="{{asset('bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -45,7 +45,6 @@
               <div>
                 <!-- <a class="btn btn-default submit">Entrar</a> -->
                 <button type="submit" class="btn btn-default"> Ingresar</button>
-                <a class="reset_pass" href="#">No recuerda su contraseña?</a>
               </div>
 
               <div class="clearfix"></div>
@@ -55,7 +54,7 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> XiomiSystem!</h1>
+                  <h1><i class="fa fa-xing"></i> XiomiSystem!</h1>
                 </div>
               </div>
             </form>

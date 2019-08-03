@@ -1,10 +1,10 @@
 @extends('cabecera')
 
 @section('contenido')
-<form>
-{!! csrf_field() !!}
+{{-- <form> --}}
+<div class="form-control">
 <div class="x_title">
-  <h2>Sub-Categorias <small>Multiplaza</small></h2>
+  <h2>Sub-Categorias</h2>
   <div class="clearfix"></div>
 </div>
 <a href="{{ route('subcategorias.create') }}" class="btn btn-primary col-md-offset-11" role="button"> <i class="fa fa-plus"></i>  Agregar</a>
@@ -26,17 +26,17 @@
 					<td>{{$subcategoria->nombre}}</td>
 					<td>{{$subcategoria->descripcion}}</td>
 					<td>
-						<img id="myImg" src="{{ asset($subcategoria->imagen) }}" alt="Snow" style="width:100%;max-width:300px">
+						<button class="btn btn-default btn-imagen" data-titulo="Imagen de la SubCategoria {{$subcategoria->nombre}}" data-imagen="{{ asset($subcategoria->imagen) }}">Ver Imagen</button>
 					</td>
 					<td>{{$subcategoria->estado == 1?"Activo":"Inactivo"}}</td>
 					<td>
+						<button class="btn btn-success detalles" data-titulo="SubCategoria {{$subcategoria->nombre}} esta asociada a las sgtes. categorias:" data-detalles="{{$subcategoria->categorias->pluck('nombre')}}"><i class='fa fa-list'></i> Detalles</button>
 						<a class="btn btn-info" href="{{ route('subcategorias.edit', $subcategoria->id) }}"><i class="fa fa-edit"></i>  Editar</a>
 		                <form style="display: inline" method="POST" action="{{ route('subcategorias.destroy', $subcategoria->id) }}">
 		                    {!! csrf_field() !!}
 		                    {!! method_field('DELETE') !!}
-		                    <!-- Button trigger modal -->
-							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar"><i class="fa fa-trash"></i>  Eliminar</button>
-		                    {{-- <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>  Eliminar</button> --}}
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar{{$subcategoria->id}}"><i class="fa fa-trash"></i>  Eliminar</button>
+  							<div class="modal fade" id="modalEliminar{{$subcategoria->id}}" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel" aria-hidden="true">
 							@include('modalEliminar-part')
 		                </form>
 					</td>
@@ -44,7 +44,9 @@
 			@endforeach
 		</tbody>
 	</table>
-</form>
+{{-- </form> --}}
+@include('modalDetalle-part')
+</div>
 @stop
 @push('script')
 <script type="text/javascript">

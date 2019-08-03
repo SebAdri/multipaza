@@ -1,5 +1,4 @@
 @extends('cabecera')
-            
 @section('contenido')
 <form method="POST" action="{{ route('locales.store') }}"   enctype="multipart/form-data">
   {!! csrf_field() !!}
@@ -7,7 +6,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h2>Cargue los locales <small>recuerde adjuntar imagen</small></h2>
+          <h2>Crear Local</h2>
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -42,10 +41,10 @@
             </div>
 
             <div class="row form-group">
-              <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="foto_ubicacion">Foto Ubicación <span class="required">*</span>
+              <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="foto_ubicacion">Foto Ubicación
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="file" id="foto_ubicacion" name="foto_ubicacion" required="required" class="form-control col-md-7 col-xs-12">
+                <input type="file" id="foto_ubicacion" name="foto_ubicacion" class="form-control col-md-7 col-xs-12">
               </div>
             </div>
 
@@ -113,8 +112,7 @@
             {{-- <div class="ln_solid"></div> --}}
             <div class="row form-group">
               <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                <button type="submit" class="btn btn-success">Grabar</button>
-                <button class="btn btn-primary" type="reset">Resetar</button>
+                <button type="submit" class="btn btn-success">Guardar</button>
                 <a href="/administrador/locales" class="btn btn-primary" type="button" id="volver" name="volver">Volver</a>
               </div>
             </div>

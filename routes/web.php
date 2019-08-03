@@ -36,6 +36,12 @@ Route::resource('/administrador/palabrasClaves', 'PalabrasClavesController');
 //REST Palabras Claves
 Route::resource('/administrador/configuraciones', 'ConfiguracionesController');
 
+//REST Palabras Claves
+Route::resource('/administrador/roles', 'RolController');
+
+//REST Palabras Claves
+Route::resource('/administrador/usuarios', 'UserController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

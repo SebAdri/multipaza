@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>Multiplaza! | Toda tu vida</title>
 
@@ -20,7 +20,7 @@
     <!-- iCheck -->
     <link href="{{asset('iCheck/skins/flat/green.css')}}" rel="stylesheet">
     <!-- Switchery -->
-    <link href="{{ asset('switchery/dist/switchery.min.css') }}" rel="stylesheet">	
+    <link href="{{ asset('switchery/dist/switchery.min.css') }}" rel="stylesheet">  
     <!-- bootstrap-progressbar -->
     <link href="{{asset('bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
@@ -43,6 +43,7 @@
     <link href="{{ asset('bootstrap-toggle\css\bootstrap-toggle.min.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href=" {{ asset('DataTables-1.10.18/css/dataTables.bootstrap.min.css') }} "/>
+    {{-- <link rel="stylesheet" type="text/css" href=" {{ asset('DataTables/dataTables.bootstrap.min.css') }} "/> --}}
 
         <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.3.1/dist/multiple-select.min.css">
@@ -55,7 +56,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>XiomiSystem</span></a>
+              <a href="/administrador" class="site_title"><i class="fa fa-xing fa-1x"></i> <span>XiomiSystem</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -63,7 +64,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src=" {{ asset('/imagenes/user.jpg') }} " alt="..." class="img-circle profile_img">
+                <img src=" {{ asset('/imagenes/avatar.jpg') }}" class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Bienvenido,</span>
@@ -82,7 +83,7 @@
                   <li><a><i class="fa fa-home"></i> Administrador <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ route('categorias.index') }}">Categorias</a></li>
-                      <li><a href="{{ route('subcategorias.index') }}">Subcategorias</a></li>
+                      <li><a href="{{ route('subcategorias.index') }}">Sub-Categorias</a></li>
                       <li><a href="{{ route('locales.index') }}">Locales</a></li>
                       <li><a href="{{ route('palabrasClaves.index') }}">Palabras Claves</a></li>
                     </ul>
@@ -90,7 +91,8 @@
                   <li><a><i class="fa fa-edit"></i> Otros <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ route('configuraciones.index') }}">Configuraciones</a></li>
-                      <li><a href="{{ route('register') }}">Usuarios</a></li>
+                      <li><a href="{{ route('usuarios.index') }}">Usuarios</a></li>
+                      <!--<li><a href="{{ route('roles.index') }}">Roles</a></li>-->
                     </ul>
                   </li>
                 </ul>
@@ -99,20 +101,6 @@
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              {{-- <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              </a> --}}
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="/logout">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
-            </div>
             <!-- /menu footer buttons -->
           </div>
         </div>
@@ -128,7 +116,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset('/imagenes/user.jpg') }} " alt="...">{{\Auth()->user()->name}}
+                    <img src="{{ asset('/imagenes/avatar.jpg') }} " alt="...">{{\Auth()->user()->name}}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -140,70 +128,9 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li> --}}
-                    <li><a href="/logout"><i class="fa fa-sign-out pull-right"></i> Cerrar SesiÃ³n</a></li>
+                    <li><a href="/logout"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
                   </ul>
                 </li>
-
-                {{-- <li role="presentation" class="dropdown">
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li> --}}
               </ul>
             </nav>
           </div>
@@ -259,6 +186,7 @@
     {{-- <script src="http://www.bootstraptoggle.com/js/bootstrap-toggle.js"></script> --}}
  
     <script type="text/javascript" src=" {{ asset('DataTables-1.10.18/js/jquery.dataTables.min.js') }} "></script>
+    {{-- <script type="text/javascript" src=" {{ asset('DataTables/dataTables.min.js') }} "></script> --}}
     {{-- <script type="text/javascript" src=" {{ asset('DataTables-1.10.18/js/dataTables.bootstrap.min.js') }} "></script> --}}
 
         <!-- Latest compiled and minified JavaScript -->

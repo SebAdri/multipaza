@@ -7,7 +7,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h2>Cargue las Palabras Claves <small>recuerde que puede asociar a varios locales</small></h2>
+          <h2>Cargar palabras claves</h2>
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -22,7 +22,7 @@
             </div>
 
             <div class="x_title">
-              <h2>Asocie las palabras claves al local <small>Ckeckea alguna opción</small></h2>
+              <h2>Asocie las palabras claves al local</h2>
               <div class="clearfix"></div>
             </div>
 
@@ -44,8 +44,7 @@
             <div class="row form-group">
               <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                 <button type="submit" class="btn btn-success">Grabar</button>
-                <button class="btn btn-primary" type="reset">Resetar</button>
-                <a href="/administrador/locales" class="btn btn-primary" type="button" id="volver" name="volver">Volver</a>
+                <a href="/administrador/palabrasClaves" class="btn btn-primary" type="button" id="volver" name="volver">Volver</a>
               </div>
             </div>
           {{-- 
@@ -124,8 +123,7 @@
             </div>
             <div class="row form-group">
               <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                <button type="submit" class="btn btn-success">Grabar</button>
-                <button class="btn btn-primary" type="reset">Resetar</button>
+                <button type="submit" class="btn btn-success">Guardar</button>
                 <a href="/administrador/locales" class="btn btn-primary" type="button" id="volver" name="volver">Volver</a>
               </div>
             </div>

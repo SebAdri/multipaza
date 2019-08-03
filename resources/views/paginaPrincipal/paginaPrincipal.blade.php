@@ -1,9 +1,10 @@
 @extends('cabecera')
 
 @section('contenido')
-<form>
+<div class="form-control">
+
 <h1>Bienvenido</h1>
-	
-</form>
+</div>
+
 
 @endsection

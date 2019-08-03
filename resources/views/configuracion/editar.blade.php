@@ -8,7 +8,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h2>Modifique la configuracion inicial <small>si no selecciona una imagen se mantendrá la existente</small></h2>
+          <h2>Modificar Configuración</h2>
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -47,8 +47,7 @@
             <div class="ln_solid"></div>
             <div class="row form-group">
               <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                <button type="submit" class="btn btn-success">Grabar</button>
-                <button class="btn btn-primary" type="reset">Resetar</button>
+                <button type="submit" class="btn btn-success">Guardar</button>
                 <a href="/administrador/configuracion" class="btn btn-primary" type="button" id="volver" name="volver">Volver</a>
               </div>
             </div>

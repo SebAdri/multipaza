@@ -20,9 +20,10 @@ class LocalesController extends Controller
      */
     public function index()
     {
-        // dd('a');
         $locales = Local::all();
+        // dd($locales);
         return view('local.lista', compact('locales'));
+        // return view('local.pruebaTabla', compact('locales'));
     }
 
     /**

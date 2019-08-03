@@ -4,7 +4,7 @@
 <form>
 {!! csrf_field() !!}
 <div class="x_title">
-  <h2>Configuración <small>Multiplaza</small></h2>
+  <h2>Configuración</h2>
   <div class="clearfix"></div>
 </div>
 @if (App\Configuracion::count()>0)

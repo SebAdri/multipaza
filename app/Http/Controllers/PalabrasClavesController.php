@@ -48,12 +48,10 @@ class PalabrasClavesController extends Controller
     {
         // dd($request->all());
         foreach (explode(',',$request->tags_1) as $word) {
-            $palabra = new PalabraClave;
-            $palabra->palabras = $word;
-            $palabra->save();
 
+            $palabra = PalabraClave::firstOrCreate(['palabras'=> $word]);
             $palabra->locales()->attach($request->locales);
-
+        
         }
 
         
@@ -103,7 +101,8 @@ class PalabrasClavesController extends Controller
             $palabra->palabras = $word;
             $palabra->save();
 
-            $palabra->locales()->attach($request->locales);
+            // $palabra->locales()->attach($request->locales);
+            $palabra->locales()->sync($request->locales);
 
         }
 

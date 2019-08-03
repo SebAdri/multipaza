@@ -1,10 +1,10 @@
 @extends('cabecera')
 
 @section('contenido')
-<form>
-{!! csrf_field() !!}
+{{-- <form> --}}
+<div class="form-control">
 <div class="x_title">
-  <h2>Palabras Claves <small>Multiplaza</small></h2>
+  <h2>Palabras Claves</h2>
   <div class="clearfix"></div>
 </div>
 <a href="{{ route('palabrasClaves.create') }}" class="btn btn-primary col-md-offset-11" role="button"> <i class="fa fa-plus"></i>  Agregar</a>
@@ -13,7 +13,6 @@
 			<tr>
 				<th>Nro</th>
 				<th>Palabra</th>
-				<th>Locales</th>
 				<th>Acción</th>
 			</tr>
 		</thead>
@@ -23,25 +22,23 @@
 					<td>{{$palabra->id}}</td>
 					<td>{{$palabra->palabras}}</td>
 					<td>
-						@foreach ($palabra->locales as $local)
-							<ul class="list-group">
-							  <li class="list-group-item">{{$local->nombre}}</li>
-							</ul>
-						@endforeach
-					</td>
-					<td>
+						<button class="btn btn-success detalles" data-titulo="Palabra {{$palabra->palabras}} asociada a los sgtes. locales:" data-detalles="{{$palabra->locales->pluck('nombre')}}"><i class='fa fa-list'></i> Detalles</button>
 						<a class="btn btn-info" href="{{ route('palabrasClaves.edit', $palabra->id) }}"><i class="fa fa-edit"></i>  Editar</a>
 		                <form style="display: inline" method="POST" action="{{ route('palabrasClaves.destroy', $palabra->id) }}">
-		                      {!! csrf_field() !!}
-		                      {!! method_field('DELETE') !!}
-		                      <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>  Eliminar</button>
+		                	{!! csrf_field() !!}
+		                    {!! method_field('DELETE') !!}
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar{{$palabra->id}}"><i class="fa fa-trash"></i>  Eliminar</button>
+  							<div class="modal fade" id="modalEliminar{{$palabra->id}}" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel" aria-hidden="true">
+							@include('modalEliminar-part')
 		                </form>
 					</td>
 				</tr>
 			@endforeach
 		</tbody>
 	</table>
-</form>
+</div>
+{{-- </form> --}}
+@include('modalDetalle-part')
 @stop
 @push('script')
 <script type="text/javascript">
