@@ -13,7 +13,7 @@
 			<tr>
 				<th>Nro</th>
 				<th>Nombre</th>
-				<th>Rol</th>
+				{{-- <th>Rol</th> --}}
 				<th>Acción</th>
 			</tr>
 		</thead>
@@ -22,7 +22,7 @@
 				<tr>
 					<td>{{$usuario->id}}</td>
 					<td>{{$usuario->name}}</td>
-					<td>{{$usuario->roles->first()['name']}}</td>
+					{{-- <td>{{$usuario->roles->first()['name']}}</td> --}}
 					{{-- <td>
 						@foreach ($usuario->permissions as $permiso)
 							{{$permiso}}

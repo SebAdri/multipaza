@@ -46,7 +46,7 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         // $request->estado = $request->estado == "on"? 0:1;
-        // return $request;
+        return $request;
         
         // Categoria::create(array_slice($request->all(),1));
         $categoria = new Categoria;

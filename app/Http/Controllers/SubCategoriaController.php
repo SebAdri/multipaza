@@ -102,9 +102,10 @@ class SubCategoriaController extends Controller
      */
     public function edit($id)
     {
-        $categorias = Categoria::where('estado',1)->get();
+        $categorias = Categoria::where('estado',0)->get();
         $subcategoria = SubCategoria::find($id);
         // dd($subcategoria);
+        // dd($categorias);
         return view('subcategoria.editar', compact('subcategoria', 'categorias'));
     }
 

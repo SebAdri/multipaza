@@ -33,7 +33,7 @@ class LocalesController extends Controller
      */
     public function create()
     {
-        $subcategorias = SubCategoria::where('estado',1)->get();
+        $subcategorias = SubCategoria::where('estado',1)->orderBy('nombre')->get();
         return view('local.alta', compact('subcategorias'));
     }
 
@@ -116,7 +116,7 @@ class LocalesController extends Controller
      */
     public function edit($id)
     {
-        $subcategorias = SubCategoria::where('estado',1)->get();
+        $subcategorias = SubCategoria::where('estado',1)->orderBy('nombre')->get();
         $local = Local::find($id);
         // dd($local->subCategorias);
         return view('local.editar', compact('local','subcategorias'));

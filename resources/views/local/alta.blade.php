@@ -67,7 +67,7 @@
             <br><br>
 
             <div class="x_title">
-              <h2>Asocie subcategorias al local <small>Ckeckea alguna opción</small></h2>
+              <h2>Asocie subcategorias al local </h2>
               <div class="clearfix"></div>
             </div>
 
@@ -76,15 +76,34 @@
                 <div class="panel-heading">Sub-Categorias</div>
                 <div class="panel-body">
                   <div class="checkbox">
-                    @foreach ($subcategorias as $subcategoria)
-                      <label>
-                        <input type="checkbox" class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
-                      </label>
-                    @endforeach
+                    <table>
+                      <tbody>
+                        <tr>
+                          @foreach ($subcategorias as $key => $subcategoria)  
+                          @php
+                          $key++
+                          @endphp
+                          @if ($key%4 != 0)
+                          <td>
+                            <label>
+                              <input type="checkbox" class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
+                            </label>
+                          </td>
+                          @else
+                          <td>
+                            <label>
+                              <input type="checkbox" class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
+                            </label>
+                          </td>
+                        </tr><tr>
+                          @endif
+                          @endforeach
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
             {{-- <div class="col-md-7 ml-md-3 col-md-offset-2">
               <div class="well well-sm">Sub-Categorias</div>

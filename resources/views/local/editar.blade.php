@@ -35,10 +35,10 @@
               </div>
             </div>
             <div class="row form-group">
-              <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="foto_principal">Foto Principal <span class="required">*</span>
+              <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="foto_principal">Foto Principal
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="file" id="foto_principal" name="foto_principal" required="required" class="form-control col-md-7 col-xs-12">
+                <input type="file" id="foto_principal" name="foto_principal" class="form-control col-md-7 col-xs-12">
               </div>
             </div>
 
@@ -74,7 +74,43 @@
               <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="estado">SubCategorias <span class="required">*</span></label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="checkbox">
-                @foreach ($subcategorias as $subcategoria)
+                <table>
+                <tbody>
+                  <tr>
+                    @foreach ($subcategorias as $key => $subcategoria)  
+                    @php
+                    $key++
+                    @endphp
+                    @if ($key%4 != 0)
+                    <td>
+                      @if($local->subCategorias->contains($subcategoria->id))
+                        <label>
+                          <input type="checkbox" checked class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
+                        </label>
+                      @else
+                         <label>
+                          <input type="checkbox" class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
+                        </label>                 
+                      @endif
+                    </td>
+                    @else
+                    <td>
+                      @if($local->subCategorias->contains($subcategoria->id))
+                        <label>
+                          <input type="checkbox" checked class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
+                        </label>
+                      @else
+                         <label>
+                          <input type="checkbox" class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
+                        </label>                 
+                      @endif
+                    </td>
+                  </tr><tr>
+                    @endif
+                    @endforeach
+                  </tbody>
+                </table>
+                {{-- @foreach ($subcategorias as $subcategoria)
                   @if($local->subCategorias->contains($subcategoria->id))
                     <label>
                       <input type="checkbox" checked class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
@@ -84,7 +120,7 @@
                       <input type="checkbox" class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
                     </label>                 
                   @endif  
-                @endforeach
+                @endforeach --}}
                 </div>
               </div>
             </div>

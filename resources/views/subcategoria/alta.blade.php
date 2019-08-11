@@ -61,11 +61,45 @@
               <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="estado">Categorias <span class="required">*</span></label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="checkbox">
-                @foreach ($categorias as $categoria)
-                  <label>
-                    <input type="checkbox"s class="flat" value="{{$categoria->id}}" name="categorias[]"> {{$categoria->nombre}}
-                  </label>
-                @endforeach
+                  <table>
+                      <tbody>
+                        <tr>
+                          @foreach ($categorias as $key => $categoria)  
+                          @php
+                          $key++
+                          @endphp
+                          @if ($key%4 != 0)
+                          <td>
+                            <label>
+                              <input type="checkbox" class="flat" value="{{$categoria->id}}" name="categorias[]"> {{$categoria->nombre}}
+                            </label>
+                          </td>
+                          @else
+                          <td>
+                            <label>
+                              <input type="checkbox" class="flat" value="{{$categoria->id}}" name="categorias[]"> {{$categoria->nombre}}
+                            </label>
+                          </td>
+                        </tr><tr>
+                          @endif
+                          @endforeach
+                        </tbody>
+                      </table>
+                  {{-- <table>
+                      <tbody>
+                        @foreach ($categorias as $categoria)  
+                          <tr>
+                            @for ($i = 0; $i < 4; $i++)
+                              <td>
+                                <label>
+                                  <input type="checkbox"s class="flat" value="{{$categoria->id}}" name="categorias[]"> {{$categoria->nombre}}
+                                </label>
+                              </td>
+                            @endfor
+                          </tr>
+                        @endforeach
+                      </tbody>
+                   </table> --}}
                 </div>
               </div>
             </div>
@@ -74,7 +108,7 @@
             <div class="row form-group">
               <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                 <button type="submit" class="btn btn-success">Grabar</button>
-                <button class="btn btn-primary" type="reset">Resetar</button>
+                {{-- <button class="btn btn-primary" type="reset">Resetar</button> --}}
                 <a href="/administrador/subcategorias" class="btn btn-primary" type="button" id="volver" name="volver">Volver</a>
               </div>
             </div>
