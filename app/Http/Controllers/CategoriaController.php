@@ -8,6 +8,8 @@ use App\Http\Requests\StoreCategoriaRequest;
 use App\Categoria;
 use Illuminate\Support\Facades\File;
 
+use App\Imports\CategoriaImport;
+use Maatwebsite\Excel\Facades\Excel;
 class CategoriaController extends Controller
 {
     function __construct()
@@ -46,14 +48,15 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         // $request->estado = $request->estado == "on"? 0:1;
-        return $request;
+        // return $request;
         
         // Categoria::create(array_slice($request->all(),1));
         $categoria = new Categoria;
         $categoria->nombre = $request->input('nombre');
         $categoria->descripcion = $request->input('descripcion');
         // dd($request->has('estado'));
-        $categoria->estado = $request->has('estado')? 1:0;
+        // $categoria->estado = $request->has('estado')? 1:0;
+        $categoria->estado = 1;
 
         // dd($categoria->estado);        
         // Check if a profile image has been uploaded
@@ -152,10 +155,20 @@ class CategoriaController extends Controller
     {
         // dd($id);
         $categoria = Categoria::find($id);
-        $categoria->subCategorias()->detach($id);
+        $local = Local::first();
+        if (!empty($local)) {
+            $local->categorias()->detach($id);
+        }
 
         Categoria::destroy($id);
 
         return redirect()->route('categorias.index');
+    }
+
+    public function import() 
+    {
+        Excel::import(new CategoriaImport, 'CategoriasMultiplaza.xlsx');
+
+        return redirect('/')->with('success', 'All good!');
     }
 }

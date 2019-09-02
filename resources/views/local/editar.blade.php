@@ -71,58 +71,30 @@
                 @endif
             </div>
             <div class="row form-group">
-              <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="estado">SubCategorias <span class="required">*</span></label>
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="checkbox">
-                <table>
-                <tbody>
-                  <tr>
-                    @foreach ($subcategorias as $key => $subcategoria)  
-                    @php
-                    $key++
-                    @endphp
-                    @if ($key%4 != 0)
-                    <td>
-                      @if($local->subCategorias->contains($subcategoria->id))
-                        <label>
-                          <input type="checkbox" checked class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
-                        </label>
-                      @else
-                         <label>
-                          <input type="checkbox" class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
-                        </label>                 
-                      @endif
-                    </td>
-                    @else
-                    <td>
-                      @if($local->subCategorias->contains($subcategoria->id))
-                        <label>
-                          <input type="checkbox" checked class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
-                        </label>
-                      @else
-                         <label>
-                          <input type="checkbox" class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
-                        </label>                 
-                      @endif
-                    </td>
-                  </tr><tr>
-                    @endif
-                    @endforeach
-                  </tbody>
-                </table>
-                {{-- @foreach ($subcategorias as $subcategoria)
-                  @if($local->subCategorias->contains($subcategoria->id))
-                    <label>
-                      <input type="checkbox" checked class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
-                    </label>
+              <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="estado"> Categorias <span class="required">*</span>
+                  </label>
+              <select class="js-example-basic-multiple col-md-6 col-sm-6 col-xs-12" name="categorias[]" multiple="multiple">
+                @foreach ($categorias as $categoria)
+                  @if ($local->categorias->contains($categoria->id))
+                    <option value="{{$categoria->id}}" selected>{{$categoria->nombre}}</option>
                   @else
-                     <label>
-                      <input type="checkbox" class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
-                    </label>                 
-                  @endif  
-                @endforeach --}}
-                </div>
-              </div>
+                    <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                  @endif
+                @endforeach
+              </select>
+            </div>
+            <div class="row form-group">
+              <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="estado"> Subcategoria <span class="required">*</span>
+                  </label>
+              <select class="js-example-basic-multiple col-md-6 col-sm-6 col-xs-12" name="subcategorias[]" multiple="multiple">
+                @foreach ($subcategorias as $subcategoria)
+                  @if ($local->subCategorias->contains($subcategoria->id))
+                    <option value="{{$subcategoria->id}}" selected>{{$subcategoria->nombre}}</option>
+                  @else
+                    <option value="{{$subcategoria->id}}">{{$subcategoria->nombre}}</option>
+                  @endif
+                @endforeach
+              </select>
             </div>
             <div class="ln_solid"></div>
             <div class="row form-group">
@@ -147,6 +119,11 @@
           window.location.replace("{{url()->previous()}}");
         }
       })
+    });
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2({
+           placeholder:"Escriba o clickee una subcategoria para buscar"
+        });
     });
   </script>
 @endpush

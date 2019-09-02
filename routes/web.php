@@ -52,3 +52,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'PrincipalController@inicio');
 Route::get('/categoria', 'PrincipalController@categorias');
 Route::get('/categoria/{id}', 'PrincipalController@subcategorias');
+
+//imports
+Route::get('/import', 'UserController@import');
+
+Route::get('/importCategorias', 'CategoriaController@import');
+Route::get('/importSubCategorias', 'SubCategoriaController@import');
+Route::get('/importLocales', 'LocalesController@import');
+Route::get('/importPalabras', 'PalabrasClavesController@importPalabras');
+
+Route::get('/importLocalesPivot', 'LocalesController@importPivot');
+Route::get('/importPalabrasPivot', 'PalabrasClavesController@importPalabrasPivot');

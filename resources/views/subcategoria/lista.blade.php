@@ -30,7 +30,7 @@
 					</td>
 					<td>{{$subcategoria->estado == 1?"Activo":"Inactivo"}}</td>
 					<td>
-						<button class="btn btn-success detalles" data-titulo="SubCategoria {{$subcategoria->nombre}} esta asociada a las sgtes. categorias:" data-detalles="{{$subcategoria->categorias->pluck('nombre')}}"><i class='fa fa-list'></i> Detalles</button>
+						{{-- <button class="btn btn-success detalles" data-titulo="SubCategoria {{$subcategoria->nombre}} esta asociada a las sgtes. categorias:" data-detalles="{{$subcategoria->categorias->pluck('nombre')}}"><i class='fa fa-list'></i> Detalles</button>--}}
 						<a class="btn btn-info" href="{{ route('subcategorias.edit', $subcategoria->id) }}"><i class="fa fa-edit"></i>  Editar</a>
 		                <form style="display: inline" method="POST" action="{{ route('subcategorias.destroy', $subcategoria->id) }}">
 		                    {!! csrf_field() !!}
@@ -38,7 +38,7 @@
 							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar{{$subcategoria->id}}"><i class="fa fa-trash"></i>  Eliminar</button>
   							<div class="modal fade" id="modalEliminar{{$subcategoria->id}}" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel" aria-hidden="true">
 							@include('modalEliminar-part')
-		                </form>
+		                </form> 
 					</td>
 				</tr>
 			@endforeach

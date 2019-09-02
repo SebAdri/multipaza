@@ -16,6 +16,7 @@ class CreateLocalesPalabrasclaves extends Migration
         Schema::create('locales_palabrasclaves', function (Blueprint $table) {
             $table->integer('local_id');
             $table->integer('palabrasclaves_id');
+            $table->timestamps();
             $table->softDeletes();
 
             //relaciones

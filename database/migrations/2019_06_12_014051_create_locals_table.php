@@ -16,10 +16,10 @@ class CreateLocalsTable extends Migration
         Schema::create('locales', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->text('ubicacion');
-            $table->boolean('estado')->default(0);//0: activo; 1: desactivado
-            $table->string('foto_principal');
-            $table->string('foto_ubicacion');
+            $table->text('ubicacion')->nullable();
+            $table->boolean('estado')->default(1);//1: activo; 0: desactivado
+            $table->string('foto_principal')->nullable();
+            $table->string('foto_ubicacion')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

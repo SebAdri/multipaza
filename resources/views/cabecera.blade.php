@@ -25,15 +25,9 @@
     <link href="{{asset('bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
     <link href="{{asset('bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
-
-    <!-- bootstrap-wysiwyg -->
-    {{-- <link href="{{ asset('google-code-prettify/bin/prettify.min.css') }}" rel="stylesheet"> --}}
-
-    <!-- Custom Theme Style -->
-    {{-- <link href="{{ asset('css/custom.min.css') }}" rel="stylesheet"> --}}
-    <!-- JQVMap -->
-    {{-- <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/> --}}
-
+    
+    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" /> --}}
+    <link href="{{ asset('select2-4.0.8/dist/css/select2.min.css') }}" rel="stylesheet">
     
     
 
@@ -45,8 +39,14 @@
     <link rel="stylesheet" type="text/css" href=" {{ asset('DataTables-1.10.18/css/dataTables.bootstrap.min.css') }} "/>
     {{-- <link rel="stylesheet" type="text/css" href=" {{ asset('DataTables/dataTables.bootstrap.min.css') }} "/> --}}
 
-        <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.3.1/dist/multiple-select.min.css">
+    <!-- jQuery -->
+    <script src=" {{ asset('select2-4.0.8/dist/js/select2.min.js') }} "></script>
+    
+    <script src="{{asset('jquery/dist/jquery.min.js')}}"></script>
+
+    <script type="text/javascript" src=" {{ asset('DataTables-1.10.18/js/jquery.dataTables.min.js') }} "></script>
+
+
 
   </head>
 
@@ -154,8 +154,7 @@
       </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="{{asset('jquery/dist/jquery.min.js')}}"></script>
+
     <!-- Bootstrap -->
     <script src="{{asset('bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <!-- FastClick -->
@@ -180,20 +179,16 @@
     <script src="{{asset('js2/custom.min.js')}}"></script>
     {{-- radio swutch toggle --}}
     <script src= "{{ asset('bootstrap-toggle\js\bootstrap-toggle.min.js') }}"></script>
-
-    {{-- <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script> --}}
-    {{-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> --}}
-    {{-- <script src="http://www.bootstraptoggle.com/js/bootstrap-toggle.js"></script> --}}
  
-    <script type="text/javascript" src=" {{ asset('DataTables-1.10.18/js/jquery.dataTables.min.js') }} "></script>
-    {{-- <script type="text/javascript" src=" {{ asset('DataTables/dataTables.min.js') }} "></script> --}}
-    {{-- <script type="text/javascript" src=" {{ asset('DataTables-1.10.18/js/dataTables.bootstrap.min.js') }} "></script> --}}
+    {{-- inicio aqui los nuevos js para la nueva pantalla --}}
+    {{-- <script type="text/javascript" src=" {{ asset('jqueryUI/jqueryUi.js') }} "></script> --}}
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> --}}
+    {{-- <script type="text/javascript" src="{{asset('paginathing.js')}}"></script> --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script> --}}
 
-        <!-- Latest compiled and minified JavaScript -->
-    <script src="https://unpkg.com/multiple-select@1.3.1/dist/multiple-select.min.js"></script>
+    {{-- fin aqui los nuevos js para la nueva pantalla --}}
 
     <script src="{{ asset('jquery.tagsinput/src/jquery.tagsinput.js') }}"></script>
-
 
     <script src="{{ asset('switchery/dist/switchery.min.js') }} "></script>
 

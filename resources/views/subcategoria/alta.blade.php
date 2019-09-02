@@ -33,10 +33,10 @@
               </div>
             </div>
             <div class="row form-group">
-              <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Elegir foto <span class="required">*</span>
+              <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Elegir foto 
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="file" id="imagen" name="imagen" required="required" class="form-control col-md-7 col-xs-12">
+                <input type="file" id="imagen" name="imagen" class="form-control col-md-7 col-xs-12">
               </div>
             </div>
 
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="row form-group">
+            {{-- <div class="row form-group">
               <label style="text-align: right;" class="control-label col-md-3 col-sm-3 col-xs-12" for="estado">Categorias <span class="required">*</span></label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="checkbox">
@@ -85,24 +85,9 @@
                           @endforeach
                         </tbody>
                       </table>
-                  {{-- <table>
-                      <tbody>
-                        @foreach ($categorias as $categoria)  
-                          <tr>
-                            @for ($i = 0; $i < 4; $i++)
-                              <td>
-                                <label>
-                                  <input type="checkbox"s class="flat" value="{{$categoria->id}}" name="categorias[]"> {{$categoria->nombre}}
-                                </label>
-                              </td>
-                            @endfor
-                          </tr>
-                        @endforeach
-                      </tbody>
-                   </table> --}}
                 </div>
               </div>
-            </div>
+            </div> --}}
 
             <div class="ln_solid"></div>
             <div class="row form-group">

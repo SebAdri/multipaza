@@ -10,6 +10,6 @@ class Categoria extends Model
 
     public function subcategorias()
     {
-    	return $this->belongsToMany(SubCategoria::Class, 'categorias_subcategorias', 'categoria_id', 'subcategoria_id');
+    	return $this->belongsTo(Local::Class, 'cate_local_subcate', 'categoria_id', 'local_id_id');
     }
 }

@@ -104,30 +104,6 @@
                   </div>
                 </div>
               </div>
-
-            {{-- <div class="col-md-7 ml-md-3 col-md-offset-2">
-              <div class="well well-sm">Sub-Categorias</div>
-              <div class="well" style="overflow: auto">
-                  <div class="checkbox">
-                    @foreach ($subcategorias as $subcategoria)
-                      <label>
-                        <input type="checkbox"s class="flat" value="{{$subcategoria->id}}" name="subcategorias[]"> {{$subcategoria->nombre}}
-                      </label>
-                    @endforeach
-                  </div>
-              </div>
-            </div> --}}
-            {{-- <div class="row form-group">
-            <div class="box box-warning">
-              <div class="box-header with-border">
-                <h3 class="box-title">Categorias</h3>
-              </div>
-              <div class="box-body">
-              </div>
-            </div>
-            </div> --}}
-
-
             {{-- <div class="ln_solid"></div> --}}
             <div class="row form-group">
               <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

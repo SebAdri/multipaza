@@ -8,6 +8,9 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Seeder;
 
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class UserController extends Controller
 {
@@ -115,4 +118,12 @@ class UserController extends Controller
         $user->destroy($id);
         return redirect()->route('usuarios.index');
     }
+
+    public function import() 
+    {
+        Excel::import(new UsersImport, 'usuariosImport.xlsx');
+        
+        return redirect('/')->with('success', 'All good!');
+    }
+
 }

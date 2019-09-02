@@ -34,7 +34,8 @@
 					</td>
 					<td>{{$local->estado == 1?"Activo":"Inactivo"}}</td>
 					<td>
-						<button class="btn btn-success detalles-locales" data-titulo="Detalles de {{$local->nombre}}." data-detalles="{{$local->subcategorias->pluck('nombre')}}" data-palabras="{{$local->palabrasClaves->pluck('palabras')}}"><i class='fa fa-list'></i> Detalles</button>
+						{{-- {{dd($local->subcategorias()->select('nombre')->distinct()->get()->pluck('nombre'))}} --}}
+						<button class="btn btn-success detalles-locales" data-titulo="Detalles de {{$local->nombre}}." data-detalles="{{$local->subcategorias()->select('nombre')->distinct()->get()->pluck('nombre')}}" data-palabras="{{$local->palabrasClaves->pluck('palabras')}}" data-categorias="{{$local->categorias()->select('nombre')->distinct()->get()->pluck('nombre')}}"><i class='fa fa-list'></i> Detalles</button>
 						<a class="btn btn-info" href="{{ route('locales.edit', $local->id) }}"><i class="fa fa-edit"></i>  Editar</a>
 		                <form style="display: inline" method="POST" action="{{ route('locales.destroy', $local->id) }}">
 		                    {!! csrf_field() !!}
@@ -73,6 +74,20 @@
             	}
 		});
 		$(".detalles-locales").click(function(){
+			// alert('llega');
+		  var categorias = ($(this).data('categorias'));
+	      $(".div-detalles").append("<div class='col-sm-12'><label>CATEGORIAS</label></div>");
+	      if(categorias.length == 0)
+	      {
+	        $(".div-detalles").append("<div style='text-align=center' class='col-sm-12'><i class='fa fa-close'></i> NO SE ENCONTRARON DATOS</div>");
+	      }else
+	      {
+	        for (i = 0; i < categorias.length; i++) {
+	          $(".div-detalles").append("<div style='text-align=center' class='col-sm-3'><i class='fa fa-check'></i> "+categorias[i]+"</div>");
+	        }
+
+	      }
+	      
 	      var detalles = ($(this).data('detalles'));
 	      $(".modal-title").text($(this).data('titulo'));
 	      $(".modal-content").addClass("panel-success");
@@ -93,11 +108,12 @@
 	        $(".div-detalles").append("<div style='text-align=center' class='col-sm-12'><i class='fa fa-close'></i> NO SE ENCONTRARON DATOS</div>");
 	      }else
 	      {
-	        for (i = 0; i < detalles.length; i++) {
+	        for (i = 0; i < palabras.length; i++) {
 	          $(".div-detalles").append("<div style='text-align=center' class='col-sm-3'><i class='fa fa-check'></i> "+palabras[i]+"</div>");
 	        }
 
 	      }
+	      
 	      $('#myModal').modal('show');
 	    });
 	} );

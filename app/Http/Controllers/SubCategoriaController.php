@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\SubCategoria;
 use App\Categoria;
+use App\Local;
 use Illuminate\Support\Facades\File;
 use Illuminate\Database\Eloquent\Model;
+
+use App\Imports\SubcategoriaImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SubCategoriaController extends Controller
 {
@@ -72,13 +76,8 @@ class SubCategoriaController extends Controller
         $subcategoria->save();
 
         //y gaurdamos la relacion
-        $subcategoria->categorias()->attach($request->categorias);
-        // foreach ($request->input('categorias') as $categoria) {
-        //     $subcategoria->categorias()->detach();        
-        //     $categoria = Categoria::find($categoria);
-        //     $categoria->subCategorias()->attach($subcategoria->id);
-        // }
-            // return $categoria;
+        // $subcategoria->categorias()->attach($request->categorias);
+
 
         return redirect()->route('subcategorias.index');
     }
@@ -159,7 +158,7 @@ class SubCategoriaController extends Controller
         // Persist user record to database
         $subcategoria->save();
         //y gaurdamos la relacion
-        $subcategoria->categorias()->sync($request->categorias);
+        // $subcategoria->categorias()->sync($request->categorias);
 
         return redirect()->route('subcategorias.index');
     }
@@ -172,11 +171,24 @@ class SubCategoriaController extends Controller
      */
     public function destroy($id)
     {
-        $subcategoria = SubCategoria::find($id);
-        $subcategoria->categorias()->detach($id);
+        // $subcategoria = SubCategoria::find($id);
+        $local = Local::first();
+        if (!empty($local)) {
+            $local->subCategorias()->detach($id);
+        }
+
+        // Categoria::destroy($id);
+        // $subcategoria->categorias()->detach($id);
 
         SubCategoria::destroy($id);
 
         return redirect()->route('subcategorias.index');
+    }
+
+    public function import() 
+    {
+        Excel::import(new SubcategoriaImport, 'subcategorias.xlsx');
+
+        return redirect('/')->with('success', 'All good!');
     }
 }

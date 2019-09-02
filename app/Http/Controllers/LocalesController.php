@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Local;
 use App\SubCategoria;
+use App\Categoria;
+
+use App\Imports\LocalImport;
+use App\Imports\PivotImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LocalesController extends Controller
 {
@@ -33,8 +38,10 @@ class LocalesController extends Controller
      */
     public function create()
     {
+        $categorias = Categoria::all();
         $subcategorias = SubCategoria::where('estado',1)->orderBy('nombre')->get();
-        return view('local.alta', compact('subcategorias'));
+        // return view('local.Newalta', compact('subcategorias'));
+        return view('local.alta2', compact('subcategorias','categorias'));
     }
 
     /**
@@ -45,6 +52,7 @@ class LocalesController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $local = new Local;
         $local->nombre = $request->input('nombre');
         $local->ubicacion = $request->input('ubicacion');
@@ -92,7 +100,16 @@ class LocalesController extends Controller
         // foreach ($variable as $key => $value) {
         //     # code...
         // }
-        $local->subCategorias()->attach($request->subcategorias);
+        // $local->products()->saveMany($products);
+        // $local->products()->saveMany($products);
+        // return $request->categorias;
+        foreach ($request->categorias as $categoria) {
+            foreach ($request->subcategorias as $subcategoria) {
+                $local->categorias()->attach($categoria, ['subcategoria_id' => $subcategoria]);
+            }
+        }
+        // $local->categorias()->attach($request->categorias);
+        // $local->subCategorias()->attach($request->subcategorias);
 
         return redirect()->route('locales.index');
     }
@@ -116,10 +133,11 @@ class LocalesController extends Controller
      */
     public function edit($id)
     {
+        $categorias = Categoria::all();
         $subcategorias = SubCategoria::where('estado',1)->orderBy('nombre')->get();
         $local = Local::find($id);
         // dd($local->subCategorias);
-        return view('local.editar', compact('local','subcategorias'));
+        return view('local.editar', compact('local','subcategorias','categorias'));
     }
 
     /**
@@ -179,7 +197,13 @@ class LocalesController extends Controller
         // foreach ($variable as $key => $value) {
         //     # code...
         // }
-        $local->subCategorias()->sync($request->subcategorias);
+        $local->categorias()->wherePivot('local_id','=',$id)->detach();
+        foreach ($request->categorias as $categoria) {
+            foreach ($request->subcategorias as $subcategoria) {
+                $local->categorias()->attach($categoria, ['subcategoria_id' => $subcategoria]);
+            }
+        }
+        // $local->subCategorias()->sync($request->subcategorias);
 
         return redirect()->route('locales.index');
     }
@@ -194,10 +218,25 @@ class LocalesController extends Controller
     {
         // dd($id);
         $local = Local::find($id);
-        $local->subCategorias()->detach($id);
+        $local->subCategorias()->detach();
+        $local->categorias()->detach();
 
         Local::destroy($id);
 
         return redirect()->route('locales.index');
+    }
+
+    public function import() 
+    {
+        Excel::import(new LocalImport, 'local.xlsx');
+
+        return redirect('/')->with('success', 'All good!');
+    }
+
+    public function importPivot() 
+    {
+        Excel::import(new PivotImport, 'pivot.xlsx');
+
+        return redirect('/')->with('success', 'All good!');
     }
 }

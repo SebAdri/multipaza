@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\PalabraClave;
 use App\Local;
 
+use App\Imports\PalabrasClavesImport;
+use App\Imports\PalabrasClavesPivotImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class PalabrasClavesController extends Controller
 {
     function __construct()
@@ -126,4 +130,20 @@ class PalabrasClavesController extends Controller
 
         return redirect()->route('palabrasClaves.index');
     }
+
+    public function importPalabras() 
+    {
+        Excel::import(new PalabrasClavesImport, 'palabrasClaves.xlsx');
+
+        return redirect('/')->with('success', 'All good!');
+    }
+
+    public function importPalabrasPivot() 
+    {
+        Excel::import(new PalabrasClavesPivotImport, 'PalabrasclavesPivot.xlsx');
+
+        return redirect('/')->with('success', 'All good!');
+    }
 }
+
+

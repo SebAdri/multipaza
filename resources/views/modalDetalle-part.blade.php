@@ -1,7 +1,7 @@
 <div class="container">
 
- <div class="modal fade" id="myModal">
-    <div class="modal-dialog">
+ <div class="modal fade bd-example-modal-lg" id="myModal">
+    <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header panel-heading">
           <h4 class="modal-title"></h4>
@@ -37,7 +37,7 @@
   
 </div>
 
-@push('script')
+{{-- @push('script') --}}
 <script type="text/javascript">
   $(document).ready(function(){
     $(".detalles").click(function(){
@@ -65,10 +65,11 @@
       $(".modal-content").removeClass("panel-success");
     });
     $(".btn-imagen").click(function(){
+      // alert("LLEGA?");
       $(".modal-title").text($(this).data('titulo'));
-      $(".div-detalles").append("<div class='col-sm-12'><img width='100%'  src="+$(this).data('imagen')+"></div>");
+      $(".div-detalles").append("<div class='col-sm-12'><img width='100%' src="+$(this).data('imagen')+"></div>");
       $('#myModal').modal('show');
     });
   });
 </script>
-@endpush
+{{-- @endpush --}}

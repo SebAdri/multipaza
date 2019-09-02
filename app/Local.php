@@ -7,10 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Local extends Model
 {
     protected $table = 'locales';
+    protected $fillable = ['id', 'nombre', 'ubicacion', 'estado', 'foto_principal'];
 
     public function subCategorias()
     {
-    	return $this->belongsToMany(SubCategoria::Class, 'local_subcategoria', 'local_id', 'subcategoria_id');
+    	return $this->belongsToMany(SubCategoria::Class, 'cate_local_subcate', 'local_id', 'subcategoria_id');
+    }
+
+    public function Categorias()
+    {
+        return $this->belongsToMany(Categoria::Class, 'cate_local_subcate', 'local_id', 'categoria_id');
     }
 
     public function promociones()

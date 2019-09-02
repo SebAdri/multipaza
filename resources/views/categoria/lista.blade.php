@@ -26,7 +26,7 @@
 					<td><button class="btn btn-default btn-imagen" data-titulo="Imagen de la categoria {{$categoria->nombre}}" data-imagen="{{ asset($categoria->imagen) }}">Ver Imagen</button>
 					</td>
 					<td>
-						<button class="btn btn-success detalles" data-titulo="Categoria {{$categoria->nombre}} está asociada a las sgtes. subcategorias:" data-detalles="{{$categoria->subcategorias->pluck('nombre')}}"><i class='fa fa-list'></i> Detalles</button>
+						{{-- <button class="btn btn-success detalles" data-titulo="Categoria {{$categoria->nombre}} está asociada a las sgtes. subcategorias:" data-detalles="{{$categoria->subcategorias->pluck('nombre')}}"><i class='fa fa-list'></i> Detalles</button> --}}
 						<a class="btn btn-info" href="{{ route('categorias.edit', $categoria->id) }}"><i class="fa fa-edit"></i>  Editar</a>
 		                {{-- <form style="display: inline" method="POST" action="{{ route('categorias.destroy', $categoria->id) }}">
 		                      {!! csrf_field() !!}
@@ -39,7 +39,8 @@
 		</tbody>
 	</table>
 @include('modalDetalle-part')
-<script type="text/javascript">
+@endsection
+{{-- <script type="text/javascript">
 	function deleteCat(id) {
 		if (confirm('Esta seguro que desea eliminar?')) {
 			var formulario = document.createElement('form');
@@ -58,8 +59,7 @@
 			formulario.submit();
 		}
 	}
-</script>
-@stop
+</script> --}}
 @push('script')
 <script type="text/javascript">
 	$(document).ready( function () {

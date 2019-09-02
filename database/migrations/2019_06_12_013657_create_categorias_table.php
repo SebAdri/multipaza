@@ -18,7 +18,7 @@ class CreateCategoriasTable extends Migration
             $table->string('nombre');
             $table->text('descripcion')->nullable();
             $table->boolean('estado')->default(1);//0: desactivado; 1: activo
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
