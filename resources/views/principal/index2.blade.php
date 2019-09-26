@@ -6,14 +6,24 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
-
-  <!-- Favicons -->
-  {{-- <link href="{{asset('liberiasFrontEnd/img/favicon.png')}}" rel="icon"> --}}
-  {{-- <link href="{{asset('liberiasFrontEnd/img/apple-touch-icon.png')}}" rel="apple-touch-icon"> --}}
+  
+  <script src="{{asset('liberiasFrontEnd/lib/jquery/jquery.min.js')}}"></script>
+  {{-- desde aqui librerias para el teclado --}}
+  <script src="{{asset('liberiasFrontEnd/lib/jquery/jquery.min.js')}}"></script>
+  <link href="{{asset('liberiasFrontEnd/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <script src="{{asset('liberiasFrontEnd/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  {{--<link rel="stylesheet" href="{{asset('liberiasFrontEnd/css2/normalize.css')}}">--}}
+  {{-- <link rel="stylesheet" href="{{asset('liberiasFrontEnd/css2/skeleton.css')}}"> --}}
+  <link rel="stylesheet" href="{{asset('/tauser-conti.min.css')}}">
+  <script src="{{asset('liberiasFrontEnd/typeahead.js')}}"></script>
+  <script src="{{asset('liberiasFrontEnd/popper.min.js')}}"></script>
+  <style>
+    .twitter-typeahead, .tt-hint, .tt-input, .tt-menu { width: 100%; }
+  </style>
+  {{-- hasta aqui librerias para el teclado --}}
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
-
+  <link href="https://Fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
   <!-- Bootstrap CSS File -->
   <link href="{{asset('liberiasFrontEnd/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
@@ -23,10 +33,7 @@
   <link href="{{asset('liberiasFrontEnd/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
   <link href="{{asset('liberiasFrontEnd/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
   <link href="{{asset('liberiasFrontEnd/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
-
-  <!-- Main Stylesheet File -->
   <link href="{{asset('liberiasFrontEnd/css/style.css')}}" rel="stylesheet">
-  <link href="{{asset('liberiasFrontEnd/select2/css/select2.min.css')}}" rel="stylesheet">
   <style>
     .modal-full {
       min-width: 83%;
@@ -55,11 +62,10 @@
             <a href="{{$volver}}" class="btn btn-primary" style="background-color: rgb(243,146,0);border-color: rgb(243,146,0);">
               <i class="fa fa-chevron-left"></i>
             </a>
-            
-            <button type="button" class="btn btn-primary lupa" style="background-color: rgb(243,146,0);border-color: rgb(243,146,0);" data-toggle="modal" data-target="#buscadorModal">
+            <button type="button" data-tipo="buscador" class="btn btn-primary boton" style="background-color: rgb(243,146,0);border-color: rgb(243,146,0);">
             <i class="fa fa-search"></i>
             </button>
-            <button type="button" class="btn btn-primary" style="background-color: rgb(243,146,0);border-color: rgb(243,146,0);" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" data-tipo="filtro" class="btn btn-primary boton" style="background-color: rgb(243,146,0);border-color: rgb(243,146,0);">
               <i class="fa fa-filter"></i>
             </button>
             <br>
@@ -98,25 +104,6 @@
     </section><!-- #portfolio -->
 
   </main>
-  @include('principal.modalFiltro-part')
-  @include('principal.modalBuscador-part')
-  @include('principal.modalLocal-part')
-
-  <!--==========================
-    Footer
-    ============================-->
-    {{-- <footer id="footer">
-      <div class="footer-top">
-        <div class="container">
-
-        </div>
-      </div>
-
-      <div class="container">
-
-      </div>
-    </footer> --}}<!-- #footer -->
-
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
     <!-- Uncomment below i you want to use a preloader -->
     <!-- <div id="preloader"></div> -->
@@ -154,44 +141,46 @@
             }
           })
         });
-        $('.js-example-basic-single').select2();
-        $(".js-example-responsive").select2({
-          width: 'resolve' // need to override the changed default
-        });
-        $(".js-example-basic-multiple-limit").select2({
-          maximumSelectionLength: 100
-        });
+        // $('.js-example-basic-single').select2();
+        // $(".js-example-responsive").select2({
+        //   width: 'resolve' // need to override the changed default
+        // });
+        // $(".js-example-basic-multiple-limit").select2({
+        //   maximumSelectionLength: 100
+        // });
         
-        $(".btnBuscar").click(function(){
-          $("#idBusqueda").val($(".select-buscar option:selected").val());
-          $("#tipoBusqueda").val($(".select-buscar option:selected").attr("data-tipo"));
-          if($(".select-buscar option:selected").attr("data-tipo") == "local")
-          {
-            $(".img-local").attr("src", $(".select-buscar option:selected").attr("data-imagen"));
-            $(".img-ubicacion").attr("src", $(".select-buscar option:selected").attr("data-ubicacion"));
-            $("#tituloP").text($(".select-buscar option:selected").attr("data-titulo"));
-            $("#texto").text($(".select-buscar option:selected").attr("data-ubicacionDes")+'. '+$(".select-buscar option:selected").attr("data-referencia"));
-            $('#myModalLocal').modal('show');
-          }else
-          {
-            $("#idBusqueda").val($(".select-buscar option:selected").val());
-            $("#tipoBusqueda").val($(".select-buscar option:selected").attr("data-tipo"));
-            $("#buscar").submit();  
-          }
-        });
+        //   $(".btnBuscar").click(function(){
+        //     $("#idBusqueda").val($(".select-buscar option:selected").val());
+        //     $("#tipoBusqueda").val($(".select-buscar option:selected").attr("data-tipo"));
+        //     if($(".select-buscar option:selected").attr("data-tipo") == "local")
+        //     {
+        //       $(".img-local").attr("src", $(".select-buscar option:selected").attr("data-imagen"));
+        //       $(".img-ubicacion").attr("src", $(".select-buscar option:selected").attr("data-ubicacion"));
+        //       $("#tituloP").text($(".select-buscar option:selected").attr("data-titulo"));
+        //       $("#texto").text($(".select-buscar option:selected").attr("data-ubicacionDes")+'. '+$(".select-buscar option:selected").attr("data-referencia"));
+        //       // $(".img-local").attr("src", $(".select-buscar option:selected").attr("data-imagen"));
+        //       // $(".img-ubicacion").attr("src", $(".select-buscar option:selected").attr("data-ubicacion"));
+        //       $('#myModalLocal').modal('show');
+        //     }else
+        //     {
+        //       $("#buscar").submit();  
+        //     }
+        //   });
 
-        //busca cuando hacemos click en la magen
-        $(".btn-buscar").click(function(){
-          // alert($(this).data('titulo'));
-          $(".img-local").attr("src", $(this).attr("src"));
-          $(".img-ubicacion").attr("src", $(this).data('fotoUbi'));
-          $("#texto").text($(this).data('ubicacion')+'. '+$(this).data('referencia'));
-          $("#tituloP").text($(this).data('titulo'));
-          
-          $('#myModalLocal').modal('show');
-          $(document).find("#dummy");
+        //   //busca cuando hacemos click en la magen
+        //   $(".btn-buscar").click(function(){
+        //     // alert($(this).data('titulo'));
+        //     $(".img-local").attr("src", $(this).attr("src"));
+        //     $(".img-ubicacion").attr("src", $(this).data('fotoUbi'));
+        //     $("#texto").text($(this).data('ubicacion')+'. '+$(this).data('referencia'));
+        //     $("#tituloP").text($(this).data('titulo'));
+            
+        //     $('#myModalLocal').modal('show');
+        //     $(document).find("#dummy");
+        //   });
         });
-      });
     </script>
+  @include('principal.modalLocal-part')
+  @include('principal.modalTeclado-part')
   </body>
   </html>

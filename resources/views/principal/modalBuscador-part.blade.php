@@ -22,7 +22,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary btnBuscar" style="background-color:rgb(0,158,199);border-color:rgb(0,158,199);">Buscar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>

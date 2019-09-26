@@ -9,12 +9,11 @@
   
   <script src="{{asset('liberiasFrontEnd/lib/jquery/jquery.min.js')}}"></script>
   {{-- desde aqui librerias para el teclado --}}
-  <script src="{{asset('liberiasFrontEnd/lib/jquery/jquery.min.js')}}"></script>
   <link href="{{asset('liberiasFrontEnd/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <script src="{{asset('liberiasFrontEnd/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  {{-- <link rel="stylesheet" href="{{asset('liberiasFrontEnd/css2/normalize.css')}}"> --}}
+  {{--<link rel="stylesheet" href="{{asset('liberiasFrontEnd/css2/normalize.css')}}">--}}
   {{-- <link rel="stylesheet" href="{{asset('liberiasFrontEnd/css2/skeleton.css')}}"> --}}
-  {{-- <link rel="stylesheet" href="{{asset('liberiasFrontEnd/css2/custom.css')}}"> --}}
+  <link rel="stylesheet" href="{{asset('/tauser-conti.min.css')}}">
   <script src="{{asset('liberiasFrontEnd/typeahead.js')}}"></script>
   <script src="{{asset('liberiasFrontEnd/popper.min.js')}}"></script>
   <style>
@@ -23,8 +22,7 @@
   {{-- hasta aqui librerias para el teclado --}}
 
   <!-- Google Fonts -->
-  {{-- <link href="https://Fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet"> --}}
-
+  <link href="https://Fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
   <!-- Bootstrap CSS File -->
   <link href="{{asset('liberiasFrontEnd/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
@@ -34,22 +32,16 @@
   <link href="{{asset('liberiasFrontEnd/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
   <link href="{{asset('liberiasFrontEnd/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
   <link href="{{asset('liberiasFrontEnd/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
-
-  <!-- Main Stylesheet File -->
   <link href="{{asset('liberiasFrontEnd/css/style.css')}}" rel="stylesheet">
-  {{-- <link href="{{asset('liberiasFrontEnd/select2/css/select2.min.css')}}" rel="stylesheet"> --}}
+  <style>
+    .modal-full {
+      min-width: 83%;
+      margin: auto;
+    }
 
-
-  
-    <style>
-      .modal-full {
-          min-width: 83%;
-          margin: auto;
-      }
-
-      .modal-full .modal-content {
-          min-height: 100vh;
-      }
+    .modal-full .modal-content {
+      min-height: 100vh;
+    }
     .img-modal 
     {
       max-width: 98%;
@@ -61,101 +53,23 @@
       max-width: 350px;
       height: 240px;
     }
-    </style>
-
-    
+  </style>
 </head>
-
 <body>
-  <main id="main">
-
-
-    <!--==========================
-      Portfolio Section
-    ============================-->
-    <section id="portfolio"  class="section-bg" >
-      <div class="container">
-
-        <header class="section-header">
-        	<a id="" href="{{$volver}}" class="btn btn-primary" style="background-color: rgb(243,146,0);border-color: rgb(243,146,0);">
-              <i class="fa fa-chevron-left"></i>
-          </a>
-          <button type="button" data-tipo="buscador" class="btn btn-primary boton" style="background-color: rgb(243,146,0);border-color: rgb(243,146,0);">
-            <i class="fa fa-search"></i>
-          </button>
-          <button type="button" data-tipo="filtro" class="btn btn-primary boton" style="background-color: rgb(243,146,0);border-color: rgb(243,146,0);">
-            <i class="fa fa-filter"></i>
-          </button>
-          {{-- <button type="button" data-tipo="buscador" class="btn btn-primary lupa" style="background-color: rgb(243,146,0);border-color: rgb(243,146,0);" data-toggle="modal" data-target="#buscadorModal">
-            <i class="fa fa-search"></i>
-          </button>
-          <button type="button" data-tipo="filtro" class="btn btn-primary" style="background-color: rgb(243,146,0);border-color: rgb(243,146,0);" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-filter"></i>
-          </button> --}}
-            
-          	<h3 style="color:rgb(0,158,199);" class="section-title">{{$titulo}}</h3>
-        </header>
-
-        <div class="row portfolio-container">
-        	@foreach($categorias as $categoria)
-
-        	<div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
-        		<div class="portfolio-wrap">
-        			<figure>
-        				@if ($direccion == "locales")
-							<img src="{{asset($categoria->imagen)}}"class="img-fluid" alt="" onclick="javascript:window.location='/{{$direccion}}/{{$categoria->id}}/{{$titulo}}';">
-        				@else
-							<img src="{{asset($categoria->imagen)}}"class="img-fluid" alt=""onclick="javascript:window.location='/{{$direccion}}/{{$categoria->id}}';"/>
-        				@endif
-        			</figure>
-
-        			<div class="portfolio-info">
-                <br>
-        				<h4>
-        					@if ($direccion == "locales")
-        						<a style="color:rgb(112,111,111);"href="/{{$direccion}}/{{$categoria->id}}/{{$titulo}}">{{$categoria->nombre}}</a>
-        					@else
-        						<a style="color:rgb(112,111,111);"href="/{{$direccion}}/{{$categoria->id}}">{{$categoria->nombre}}</a>
-        					@endif
-        				</h4>
-        				{{-- <p>{{$categoria->descripcion}}</p> --}}
-        			</div>
-        		</div>
-        	</div>
-        	@endforeach
-
-        </div>
-
-      </div>
-    </section><!-- #portfolio -->
-
-  </main>
+  <form method="GET" id="buscar" action="/buscar">
+    <input type="hidden" name="tipo" id="tipoBusqueda">
+    <input type="hidden" name="id" id="idBusqueda">
+  </form>
+  @yield('contenido')
+  
   {{-- @include('principal.modalFiltro-part')
-  @include('principal.modalBuscador-part')
-  @include('principal.modalLocal-part') --}}
+  @include('principal.modalBuscador-part')--}}
+  @include('principal.modalLocal-part') 
   @include('principal.modalTeclado-part')
-  <!--==========================
-    Footer
-  ============================-->
-  {{-- <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        
-      </div>
-    </div>
-
-    <div class="container">
-
-    </div>
-  </footer> --}}<!-- #footer -->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-  <!-- Uncomment below i you want to use a preloader -->
-  <!-- <div id="preloader"></div> -->
-
   <!-- JavaScript Libraries -->
   <script src="{{asset('liberiasFrontEnd/lib/jquery/jquery-migrate.min.js')}}"></script>
-  {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
   <script src="{{asset('liberiasFrontEnd/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('liberiasFrontEnd/lib/easing/easing.min.js')}}"></script>
   <script src="{{asset('liberiasFrontEnd/lib/superfish/hoverIntent.js')}}"></script>
@@ -167,12 +81,7 @@
   <script src="{{asset('liberiasFrontEnd/lib/isotope/isotope.pkgd.min.js')}}"></script>
   <script src="{{asset('liberiasFrontEnd/lib/lightbox/js/lightbox.min.js')}}"></script>
   <script src="{{asset('liberiasFrontEnd/lib/touchSwipe/jquery.touchSwipe.min.js')}}"></script>
-  <!-- Contact Form JavaScript File -->
   <script src="{{asset('liberiasFrontEnd/contactform/contactform.js')}}"></script>
-
-  <!-- Template Main Javascript File -->
-  <script src="{{asset('liberiasFrontEnd/js/main.js')}}"></script>
-  <script src="{{asset('liberiasFrontEnd/select2/js/select2.min.js')}}"></script>
   <script type="text/javascript">
       $(document).ready(function() {
       // alert("LLEGA");

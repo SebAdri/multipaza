@@ -1,0 +1,103 @@
+.keyboard button,
+.keyboard-alpha button {
+    -moz-box-shadow: 0 1px 1px #797878;
+    -webkit-box-shadow: 0 1px 1px #797878;
+    box-shadow: 0 1px 1px #797878
+}
+
+.keyboard {
+    width: 400px
+}
+
+.keyboard,
+.keyboard-alpha {
+    text-align: center
+}
+
+.keyboard button,
+.keyboard-alpha button {
+    font-size: 1em;
+    line-height: 1em;
+    padding: 20px 50px;
+    margin: 4px;
+    border: none;
+    border-radius: .25rem;
+    color: #021E5E;
+    background: #fff
+}
+
+.keyboard button:active,
+.keyboard-alpha button:active {
+    color: #021E5E;
+    background-color: #BBD300;
+    border-color: #BBD300
+}
+
+#key-delete {
+    background: #A94442;
+    border: #A94442 solid 2px;
+    padding: 14px 80px;
+    margin: 4px;
+    margin-bottom: 8px;
+    border: none;
+    vertical-align: top
+}
+
+#key-delete svg {
+    width: 80px;
+    height: 34px
+}
+
+#key-delete:active {
+    background-color: #c0605e
+}
+
+
+.keyboard-tarjeta {
+    background: #BFBFBF
+}
+
+.keyboard-tarjeta .keyboard-alpha {
+    width: 920px;
+    margin: 0 auto
+}
+
+.keyboard-tarjeta .keyboard-alpha>div {
+    width: 100%;
+    display: block
+}
+
+.keyboard-tarjeta .keyboard-alpha div.col-12 button {
+    padding: 17px 29px;
+    margin: 0 0 4px
+}
+
+.keyboard-tarjeta .keyboard-alpha div.col-12 #key-delete {
+    background: #A94442;
+    border: #A94442 solid 2px;
+    padding: 10px 40px;
+    margin: 3px 0;
+    vertical-align: bottom
+}
+
+.keyboard .op-dolar {
+    display: none
+}
+
+.keyboard-dolar #key-delete {
+    padding: 14px 16px
+}
+
+.keyboard-dolar .op-dolar {
+    display: inline-block
+}
+
+.keyboard-area {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 182px;
+    background: #BFBFBF
+}
+

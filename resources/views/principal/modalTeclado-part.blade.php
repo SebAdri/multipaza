@@ -1,12 +1,4 @@
-	<!-- Button trigger modal -->
-<!-- 	<button type="button" data-tipo="buscador" class="btn btn-primary boton">
-	  Buscar
-	</button>
-	<button type="button" data-tipo="filtro" class="btn btn-primary boton">
-	  Filtro
-	</button> -->
-	<!-- Modal -->
-	<div class="modal fade  bd-example-modal-lg" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade bd-example-modal-lg" tabindex="-1" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -19,71 +11,48 @@
 			<div id="the-basics">
 				<div class="btn-group" id="palabras-filtro" hidden>
 				</div>
-				<input class='typeahead' type='text' id="buscador-datos">
+				<input class='typeahead form-control' focus type='text' id="buscador-datos">
 			</div>
 			<br><br><br><br><br><br><br><br>
-		    <div class="keyboard">
-		        <div class="row">
-		            <div class="twelve columns">
-		                <button class="keyboard-key" id="key-1">1</button>
-		                <button class="keyboard-key" id="key-2">2</button>
-		                <button class="keyboard-key" id="key-3">3</button>
-		                <button class="keyboard-key" id="key-4">4</button>
-		                <button class="keyboard-key" id="key-5">5</button>
-		                <button class="keyboard-key" id="key-6">6</button>
-		                <button class="keyboard-key" id="key-7">7</button>
-		                <button class="keyboard-key" id="key-8">8</button>
-		                <button class="keyboard-key" id="key-9">9</button>
-		                <button class="keyboard-key" id="key-0">0</button>
-		                
-		            </div>
-		        </div>
+			<div class="keyboard-tarjeta">
+			    <div class="keyboard-alpha text-center w-100 pt-2 pb-2">
+	            <div class="col-12 text-center">
+	                <button class="keyboard-key" id="key-Q">Q</button>
+	                <button class="keyboard-key" id="key-W">W</button>
+	                <button class="keyboard-key" id="key-E">E</button>
+	                <button class="keyboard-key" id="key-R">R</button>
+	                <button class="keyboard-key" id="key-T">T</button>
+	                <button class="keyboard-key" id="key-Y">Y</button>
+	                <button class="keyboard-key" id="key-U">U</button>
+	                <button class="keyboard-key" id="key-I">I</button>
+	                <button class="keyboard-key" id="key-O">O</button>
+	                <button class="keyboard-key" id="key-P">P</button>
+	            </div>
+	            <div class="col-12 text-center">
+	                <button class="keyboard-key" id="key-A">A</button>
+	                <button class="keyboard-key" id="key-S">S</button>
+	                <button class="keyboard-key" id="key-D">D</button>
+	                <button class="keyboard-key" id="key-F">F</button>
+	                <button class="keyboard-key" id="key-G">G</button>
+	                <button class="keyboard-key" id="key-H">H</button>
+	                <button class="keyboard-key" id="key-J">J</button>
+	                <button class="keyboard-key" id="key-K">K</button>
+	                <button class="keyboard-key" id="key-L">L</button>
+	            </div>
+	            <div class="col-12 text-center">
+	                <button class="keyboard-key" id="key-Z">Z</button>
+	                <button class="keyboard-key" id="key-X">X</button>
+	                <button class="keyboard-key" id="key-C">C</button>
+	                <button class="keyboard-key" id="key-V">V</button>
+	                <button class="keyboard-key" id="key-B">B</button>
+	                <button class="keyboard-key" id="key-N">N</button>
+	                <button class="keyboard-key" id="key-Nn">Ñ</button>
+	                <button class="keyboard-key" id="key-M">M</button>
+	                <button class="keyboard-key-borrar" id="key-borrar">BORRAR</button>
+	            </div>
+			    </div>
+			</div>    
 
-
-		        <div class="row">
-		            <div class="twelve columns">
-		                <button class="keyboard-key" id="key-Q">Q</button>
-		                <button class="keyboard-key" id="key-W">W</button>
-		                <button class="keyboard-key" id="key-E">E</button>
-		                <button class="keyboard-key" id="key-R">R</button>
-		                <button class="keyboard-key" id="key-T">T</button>
-		                <button class="keyboard-key" id="key-Y">Y</button>
-		                <button class="keyboard-key" id="key-U">U</button>
-		                <button class="keyboard-key" id="key-I">I</button>
-		                <button class="keyboard-key" id="key-O">O</button>
-		                <button class="keyboard-key" id="key-P">P</button>
-		            </div>
-		        </div>
-
-		        <div class="row">
-		            <div class="twelve columns">
-		                <button class="keyboard-key" id="key-A">A</button>
-		                <button class="keyboard-key" id="key-S">S</button>
-		                <button class="keyboard-key" id="key-D">D</button>
-		                <button class="keyboard-key" id="key-F">F</button>
-		                <button class="keyboard-key" id="key-G">G</button>
-		                <button class="keyboard-key" id="key-H">H</button>
-		                <button class="keyboard-key" id="key-J">J</button>
-		                <button class="keyboard-key" id="key-K">K</button>
-		                <button class="keyboard-key" id="key-L">L</button>
-		            </div>
-		        </div>
-
-		        <div class="row">
-		            <div class="twelve columns">
-		                <button class="keyboard-key" id="key-Z">Z</button>
-		                <button class="keyboard-key" id="key-X">X</button>
-		                <button class="keyboard-key" id="key-C">C</button>
-		                <button class="keyboard-key" id="key-V">V</button>
-		                <button class="keyboard-key" id="key-B">B</button>
-		                <button class="keyboard-key" id="key-N">N</button>
-		                <button class="keyboard-key" id="key-Nn">Ñ</button>
-		                <button class="keyboard-key" id="key-M">M</button>
-		                <button class="keyboard-key-borrar" id="key-borrar">BORRAR</button>
-		            </div>
-		        </div>
-		    </div>
-	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
 	        <button type="button" class="btn btn-primary buscar-datos">BUSCAR</button>
@@ -111,7 +80,7 @@
 						url:'{{ route('getLocalesPalabras')}}',
 						method: 'get',
 						data: {
-						material:option
+						option:option
 						},
 						dataType: 'json',
 						success:function(reponse){
@@ -175,11 +144,7 @@
 					})
 					.fail(function(){
 						alert('ocurrio un error interno, contacte con sebas');
-					});					
-
-					/*
-
-					*/
+					});
 				}
 				$('#the-basics .typeahead').typeahead({
 					hint: true,
@@ -265,27 +230,32 @@
 					console.log(ids);
 				}else
 				{
-				    $.each(query, function(key, val) { 
-				    	if(val.name == elemento && val.tipo == 'local')
+				    $.each(query, function(key, val) {
+			    	if(val.nombre == elemento)
 				    	{
-				    		console.log(val.id);
-				    		console.log(val.name);
-				    		console.log(val.imagen);
-				    		console.log(val.mapa);
-				    		console.log('Cargar datos en el modal y llamar');
+				            $(".img-local").attr("src", '{{asset('')}}'+val.foto_principal);
+				            $(".img-ubicacion").attr("src",'{{asset('')}}'+val.foto_ubicacion);
+				            $("#tituloP").text(elemento);
+				            $("#texto").text(val.ubicacion +". "+ val.referencia);
+				            $('#exampleModal').modal('toggle');
+				            $('#myModalLocal').modal('show');
+				            $('body').css('overflow','hidden');
 				    		return
-				    	}else if (val.name == elemento && val.tipo == 'palabra')
+				    	}else if (val.palabras == elemento )
 				    	{
-				    		console.log(val.id);
-				    		console.log(val.name);
-				    		console.log('Hacer la consulta');
-				    		return;
+      					    $("#idBusqueda").val(val.id);
+      					    $("#tipoBusqueda").val('palabra');
+				    		$("#buscar").submit();
+				    		//alert('palabra')
+				    		//console.log(val.id);
+				    		//console.log(val.name);
+				    		//console.log('Hacer la consulta');
 				    	}
-				    	
+				    	$('#myModalLocal').on('hidden.bs.modal', function (e) {
+				    		$('body').css('overflow','visible');
+						})
 				    })
 				}				
 			});
 		});
 	</script>
-<!-- </body>
-</html> -->
