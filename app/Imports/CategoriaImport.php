@@ -19,6 +19,7 @@ class CategoriaImport implements ToModel
             'nombre' => $row[1],
             'descripcion' => $row[2],
             'estado' => $row[3],
+            'imagen' => $row[4],
         ]);
     }
 }

@@ -56,12 +56,12 @@
 	  background-color: rgb(243,146,0);
 	  border: none;
 	  color: white;
-	  padding: 14px 20px;
+	  padding: 25px 45px;
 	  text-align: center;
 	  text-decoration: none;
 	  display: inline-block;
-	  font-size: 18px;
-	  border-radius: 5px;
+	  font-size: 35px;
+	  border-radius: 10px;
 	  cursor: pointer;
 	}
 	.h1
@@ -81,16 +81,15 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-
 	}
 	</style>
 </head>
-<body>
+<body style="background-image: url({{asset($con->fondo_principal)}})">
 	<div class="div-h1">
-		<h1 class="h1">MULTIPLAZA, TODA TU VIDA</h1>
+		<h1 class="h1">{{$con->saludo_inicial}}</h1>
 	</div>
 	<div class="div-button">
-		<button onclick="location.href='/categoria'" class="button">COMENZAR</button>
+		<button onclick="location.href='/Categorias'" class="button">COMENZAR</button>
 	</div>
 </body>
 </html>

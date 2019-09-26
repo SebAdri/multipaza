@@ -18,8 +18,9 @@ class LocalImport implements ToModel
             'id'     => $row[0],
             'nombre'       => $row[1], 
             'ubicacion'   => $row[2],
-            'estado'     => $row[3],
-            'foto_principal'      => $row[4],
+            'referencia'   => $row[3],
+            'estado'     => $row[4],
+            'foto_principal'      => $row[5]
         ]);
     }
 }

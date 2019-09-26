@@ -73,7 +73,8 @@
         			}
             	}
 		});
-		$(".detalles-locales").click(function(){
+		// $(".detalles-locales").click(function(){
+		$("#tablaLista").on('click', ".detalles-locales", function(){
 			// alert('llega');
 		  var categorias = ($(this).data('categorias'));
 	      $(".div-detalles").append("<div class='col-sm-12'><label>CATEGORIAS</label></div>");

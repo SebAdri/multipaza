@@ -17,6 +17,7 @@ class CreateLocalsTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->text('ubicacion')->nullable();
+            $table->text('referencia')->nullable();
             $table->boolean('estado')->default(1);//1: activo; 0: desactivado
             $table->string('foto_principal')->nullable();
             $table->string('foto_ubicacion')->nullable();

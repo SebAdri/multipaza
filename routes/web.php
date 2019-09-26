@@ -50,8 +50,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/', 'PrincipalController@inicio');
-Route::get('/categoria', 'PrincipalController@categorias');
-Route::get('/categoria/{id}', 'PrincipalController@subcategorias');
+Route::get('/Categorias', 'PrincipalController@categorias');
+Route::get('/subcategoria/{id}', 'PrincipalController@subcategorias');
+Route::get('/locales/{id}/{di}', 'PrincipalController@locales');
+// Route::post('filtros', 'PrincipalController@filtros');
+Route::post('filtros', ['as' => 'filtros', 'uses'=>'PrincipalController@filtros']);
+Route::get('buscar', ['as' => 'buscar', 'uses' => 'PrincipalController@buscar']);
+Route::get('getLocalesPalabras', ['as' => 'getLocalesPalabras', 'uses' => 'PrincipalController@getLocalesPalabras']);
 
 //imports
 Route::get('/import', 'UserController@import');

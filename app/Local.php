@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Local extends Model
 {
     protected $table = 'locales';
-    protected $fillable = ['id', 'nombre', 'ubicacion', 'estado', 'foto_principal'];
+    protected $fillable = ['id', 'nombre', 'ubicacion', 'referencia','estado', 'foto_principal'];
 
     public function subCategorias()
     {

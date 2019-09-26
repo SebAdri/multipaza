@@ -3,63 +3,25 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="{{asset('liberiasFrontEnd/lib/jquery/jquery.min.js')}}"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <script src="https://kit.fontawesome.com/316714fe29.js"></script>
-	<style>
-		@keyframes fadein {
-		    from {
-		        opacity:0;
-		    }
-		    to {
-		        opacity:1;
-		    }
-		}
-		@-moz-keyframes fadein { /* Firefox */
-		    from {
-		        opacity:0;
-		    }
-		    to {
-		        opacity:1;
-		    }
-		}
-		@-webkit-keyframes fadein { /* Safari and Chrome */
-		    from {
-		        opacity:0;
-		    }
-		    to {
-		        opacity:1;
-		    }
-		}
-		@-o-keyframes fadein { /* Opera */
-		    from {
-		        opacity:0;
-		    }
-		    to {
-		        opacity: 1;
-		    }
-		}		
-		body
-		{
-			animation: fadein 4s;
-		    -moz-animation: fadein 4s; /* Firefox */
-		    -webkit-animation: fadein 4s; /* Safari and Chrome */
-		    -o-animation: fadein 4s; /* Opera */
-			overflow-y: auto;
-		}
-		::-webkit-scrollbar {
-		  width: 20px;
-		}
-		::-webkit-scrollbar-track {
-		  box-shadow: inset 0 0 5px grey; 
-		  border-radius: 10px;
-		}
-		::-webkit-scrollbar-thumb {
-		  background: red; 
-		  border-radius: 10px;
-		}
-		::-webkit-scrollbar-thumb:hover {
-		  background: #b30000; 
-		}		
+
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+  
+	<style>	
 		.agileits-pricing-grid{
 			flex: 1;
 		    -webkit-box-flex: 1;
@@ -118,20 +80,27 @@
 <body>
 	<div class="div-cabecera">
 		<div style="float: left; text-align: center">
-			<a href="inicio.html"><i style="color:rgb(243,146,0);" class="fa fa-arrow-circle-left fa-3x" aria-hidden="true"></i></a>
-          	<i style="color:rgb(243,146,0);"  class="fas fa-search fa-3x"></i>
+			<a href="/"><i style="color:rgb(243,146,0);" class="fa fa-arrow-circle-left fa-3x" aria-hidden="true"></i></a>
+          	<i style="color:rgb(243,146,0);" data-toggle="modal" data-target="#myModal" class="filtro fas fa-filter fa-3x"></i>
 		<br><br>
 		</div>
 	</div>
 	<div class="pricing-coop" style="height: 95%; width: 100%; overflow: auto; white-space: nowrap;overflow-y: hidden;">
 		@foreach($categorias as $categoria)
 			<div class="agileits-pricing-grid" style="background-color: rgb(243,146,0); height: 100%; width: 24%; display: inline-block; ">
-				<a href="/categoria/{{$categoria->id}}"><img src="{{asset($categoria->imagen)}}" width="100%" height="85%"></a>
+				<a href="/subcategoria/{{$categoria->id}}"><img src="{{asset($categoria->imagen)}}" width="100%" height="85%"></a>
 				<div class="wthree-pricing-info div-detalles" style="background-color: rgb(243,146,0);">
 				    <h3>{{$categoria->nombre}}</h3>
 				</div>
 			</div>	
 		@endforeach
 	</div>
+	@include('principal.modalFiltro-part')
+<script>
+	$(document).ready(function(){
+
+	})
+</script>
+
 </body>
 </html>

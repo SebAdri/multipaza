@@ -19,6 +19,7 @@ class CreateSubCategoriasTable extends Migration
             $table->text('descripcion')->nullable();
             $table->boolean('estado')->default(1);//1: activo; 0: desactivado
             $table->string('imagen')->nullable();
+            $table->string('tipo')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
